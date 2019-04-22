@@ -1,0 +1,140 @@
+<div class="animated fadeIn">
+  <div *ngIf="!isMaster" class="card">
+    <div class="card-header">
+      <strong>Initiate a new file</strong>
+
+    </div>
+    <form #fileForm="ngForm">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="name">Upload File</label>
+              <input type="file" class="form-control" id="name" (change)="onFileChange($event)">
+            </div>
+          </div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="name">Remarks</label>
+              <input type="text" class="form-control" id="name" name="remarks" ngModel>
+            </div>
+          </div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+          <div class="col-sm-4">
+            <button class="badge-success" (click)="onFile(fileForm.value)">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br>
+  <br>
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Initiated Docs
+    </div>
+
+    <!-- Form for uploading file-->
+
+    <!-- Table for Client -->
+    <table *ngIf="!isMaster" class="table table-bordered table-striped table-sm">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name of the Party</th>
+          <th>Date registered</th>
+          <th>Acknowledgement Number</th>
+          <th>Tracking Number</th>
+          <th>UID</th>
+          <th>Download 15cacb</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doc of docs; let c = index">
+          <td>{{c+1}}</td>
+          <td>{{doc.name}}</td>
+          <td>{{doc.date}}</td>
+          <td><p *ngIf="doc.submit == 1">{{doc.acknowledge}}</p><p *ngIf="doc.submit != 1">Not Processed</p></td>
+          <td><p *ngIf="doc.submit == 1">{{doc.tracking}}</p><p *ngIf="doc.submit != 1">Not Processed</p></td>
+          <td><p *ngIf="doc.submit == 1">{{doc.udin}}</p><p *ngIf="doc.submit != 1">Not Processed</p></td>
+          <td><button *ngIf="doc.submit == 1"  class="btn-ghost-primary" (click)="download(doc.download)">Download</button><p *ngIf="doc.submit != 1">Not Processed</p></td>
+          <td><span *ngIf="doc.status == 'pending'" class="badge badge-warning">{{doc.status}}</span><span class="badge badge-success" *ngIf="doc.status == 'accepted'">{{doc.status}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Table for master -->
+    <table *ngIf="isMaster" class="table table-bordered table-striped table-sm table-responsive" style="overflow:scroll;">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name of Client</th>
+          <th>Date</th>
+          <th>File</th>
+          <th>Acknowledgement Number</th>
+          <th>Tracking Number</th>
+          <th>UDIN</th>
+          <th>Upload file</th>
+          <th>Status</th>
+          <th>SAVE</th>
+          <th>SUBMIT</th>
+        </tr>
+      </thead>
+      <tbody>save
+        <tr *ngFor="let doc of docs; let c = index;">
+            <td>{{c+1}}</td>
+            <td>{{doc.name}}</td>
+            <td>{{doc.date}}</td>
+            <td>{{doc.uploaded_doc}}</td>
+            <td><p *ngIf="doc.submit == 1">{{doc.acknowledge}}</p><input *ngIf="doc.submit != 1" type="text" class="form-control" name="acknowledgement" [(ngModel)]="doc.acknowledge" ></td>
+            <td><p *ngIf="doc.submit == 1">{{doc.tracking}}</p><input *ngIf="doc.submit != 1" type="text" name="tracking" class="form-control" [(ngModel)]="doc.tracking" ></td>
+            <td><p *ngIf="doc.submit == 1">{{doc.udin}}</p><input *ngIf="doc.submit != 1" type="text" name="udin"  class="form-control"[(ngModel)]="doc.udin" ></td>
+            <td><p *ngIf="doc.submit == 1">SUBMITTED</p><input type="file" *ngIf="doc.submit != 1" name="report" (change)="onFileChange($event,'res')" value="doc.download"></td>
+            <td><span *ngIf="doc.status == 'pending'" class="badge badge-warning">{{doc.status}}</span><span class="badge badge-success" *ngIf="doc.status == 'accepted'">{{doc.status}}</span></td>
+            <td><button class = "btn btn-block btn-outline-primary" (click) = "save(doc.acknowledge, doc.tracking, doc.udin, doc.did)">Save</button></td>
+            <td><button class = "btn btn-block btn-outline-success" (click) = "submitDetails(doc.id)">Submit</button></td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="isMaster && show" class="card">
+
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Pending Logins
+    </div>
+    <table class="table table-bordered table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Company</th>
+          <th>PAN</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Password</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr *ngFor="let i of logs;let c=index">
+        <th scope="row">{{c+1}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.company}}</td>
+        <td>{{i.pan}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.phone}}</td>
+        <td> <input type="text" [(ngModel)]="password"></td>
+        <td><button *ngIf="showButton(i.password)" (click)="setPassword(i.id, i.password)"
+            class="btn btn-block btn-ghost-primary" type="button">Submit</button></td>
+      </tr>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>

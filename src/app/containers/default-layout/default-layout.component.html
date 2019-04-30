@@ -1,9 +1,4 @@
-<app-header
-  [navbarBrandRouterLink]="['/dashboard']"
-  [fixed]="false"
-  
-  [sidebarToggler]="''"
-  [asideMenuToggler]="''">
+<app-header [navbarBrandRouterLink]="['/dashboard']" [fixed]="false" [sidebarToggler]="''" [asideMenuToggler]="''">
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
       <a class="nav-link" [routerLink]="['/blog']">Caselaws</a>
@@ -14,10 +9,13 @@
     <li class="nav-item px-3">
       <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
     </li>
-    <li class="nav-item px-3">
+    <li *ngIf="!isLogin" class="nav-item px-3">
       <a class="nav-link" [routerLink]="['/login']">Login</a>
     </li>
-   
+    <li *ngIf="isLogin" class="nav-item px-3">
+      <a class="nav-link" [routerLink]="['/login']">Logout</a>
+    </li>
+
   </ul>
   <ul class="nav navbar-nav ml-auto">
     <!-- <li class="nav-item d-md-down-none">
@@ -56,9 +54,9 @@
     <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
     <app-sidebar-minimizer></app-sidebar-minimizer>
   </app-sidebar> -->
- 
+
   <main class="main">
- 
+
     <!-- <cui-breadcrumb>
    
       <li class="breadcrumb-menu d-md-down-none">
@@ -69,14 +67,14 @@
         </div>
       </li>
     </cui-breadcrumb> -->
- 
+
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>
   </main>
   <!-- <app-aside [fixed]="false" [display]="false">
     <tabset> -->
-      <!-- <tab>
+  <!-- <tab>
         <ng-template tabHeading><i class="icon-list"></i></ng-template>
         <div class="list-group list-group-accent">
           <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</div>
@@ -173,7 +171,7 @@
           </div>
         </div>
       </tab> -->
-      <!-- <tab>
+  <!-- <tab>
         <ng-template tabHeading><i class="icon-speech"></i></ng-template>
         <div class="p-3">
           <div class="message">
@@ -252,7 +250,7 @@
           </div>
         </div>
       </tab> -->
-      <!-- <tab>
+  <!-- <tab>
         <ng-template tabHeading><i class="icon-settings"></i></ng-template>
         <div class="p-3">
           <h6>Settings</h6>
@@ -323,10 +321,30 @@
           <small class="text-muted">25GB/256GB</small>
         </div>
       </tab> -->
-    <!-- </tabset>
+  <!-- </tabset>
   </app-aside> -->
 </div>
-<app-footer>
-  <!-- <span><a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs.</span>
-  <span class="ml-auto">Powered by <a href="https://coreui.io/angular">CoreUI for Angular</a></span> -->
+<app-footer style="background-color: #e6e6e6">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <span>
+    <div class="row">
+      <div class="col-sm-2 md-2">
+        
+      </div>
+      <div class="col-sm-2 md-2">
+          <a class="nav-link" [routerLink]="['/blog']"> <img src="../../../assets/img/fb.png" /> </a>
+      </div>
+      <div class="col-sm-2 md-2">
+          <a class="nav-link" [routerLink]="['/blog']"> <img src="../../../assets/img/it.png" /> </a>
+      </div>
+      <div class="col-sm-2 md-2">
+          <a class="nav-link" [routerLink]="['/blog']"> <img src="../../../assets/img/ln.png" /> </a>
+      </div>
+      <div class="col-sm-2 md-2">
+          <a class="nav-link" [routerLink]="['/blog']"> <img src="../../../assets/img/tt.png" /> </a>
+      </div>
+    </div>
+  </span>
+  <span class="ml-auto"></span>
 </app-footer>

@@ -1,0 +1,333 @@
+<div class="animated fadeIn" style="background-color : #f5f5ef">
+  <div class="row" >
+    <div class="col-sm-10 col-md-10">
+      <div class="row">
+        <div *ngFor="let post of pagedItems" class="col-sm-6 col-md-4">
+          <div (click) = "displayBlog(post)" class="card border-secondary">
+            <div class="card-header">
+             <img src="../../../assets/img/brand/sygnet.svg" />
+            </div>
+            <div class="card-body">
+              {{post.title}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="row">
+        <div class="col-sm-12 md-12">
+          <div class="card">
+            sd
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(1)">First</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.currentPage + 1)">Next</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.totalPages)">Last</a>
+    </li>
+
+  </ul>
+
+</div>
+
+<div style=" background-color: #e6e6e6;">
+  <div class="row">
+    <div class="col-sm-4 md-4">
+      <div class="">
+            <h4>Chat with experts</h4>
+            contact@15cacb.com <br>
+            +91 9967110003
+      </div>
+    </div>
+    <div class="col-sm-4 md-4">
+        <div class="card">
+            <div class="card-header">
+              <strong>Company</strong>
+              <small>Form</small>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="company">Name</label>
+                <input type="text" class="form-control" id="company" placeholder="Enter your  name">
+              </div>
+              <div class="form-group">
+                <label for="vat">Email</label>
+                <input type="text" class="form-control" id="vat" placeholder="PL1234567890">
+              </div>
+              <div class="form-group">
+                <label for="street">Contact Number</label>
+                <input type="text" class="form-control" id="street" >
+              </div>
+              
+              <div class="form-group">
+                <label for="country">Query</label>
+                <input type="text" class="form-control" id="country" >
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-sm-4 md-4">
+
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+
+
+
+
+
+
+<!-- <style>
+  .card {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-top: 1%;
+  }
+
+  .hr-text {
+    line-height: 1em;
+    position: relative;
+    outline: 0;
+    border: 0;
+    color: black;
+    text-align: center;
+    height: 1.5em;
+    opacity: .5;
+
+    &:before {
+      content: '';
+      // use the linear-gradient for the fading effect
+      // use a solid background color for a solid bar
+      background: linear-gradient(to right, transparent, #818078, transparent);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+    }
+
+    &:after {
+      content: attr(data-content);
+      position: relative;
+      display: inline-block;
+      color: black;
+
+      padding: 0 .5em;
+      line-height: 1.5em;
+      // this is really the only tricky part, you need to specify the background color of the container element...
+      color: #818078;
+      background-color: #fcfcfa;
+    }
+
+</style>
+<div class="card">
+  <div class="row">
+    <div class="col-sm-3 md-3">
+
+    </div>
+    <div class="col-sm6 md-6">
+      <ul>
+        <li>
+          <div class="card">
+            <h6>
+              1. Basic Understanding
+            </h6>
+            <br>
+            There are certain compliances to make payments outside India, one of such compliance is submission of Form
+            15CA and 15CB. Rule 37BB defines the manner to furnish information in form 15CB and making declaration in
+            form 15CA .
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <h6>
+              2. What is 15 CA ?
+            </h6>
+            <br>
+            All the information in respect of payments made to the Non-residents is furnished in 15CA making it a tool
+            for collecting data about foreign remittances. This form essentially is a declaration used by the remitter
+            for collecting information on payments chargeable.
+            Thus, form 15CA helps the IT department of the country keep a track of foreign remittances and their
+            taxability.
+            Form 15CA will be NOT be required to be furnished by an individual for remittance, which does not require
+            RBI approval.<br>
+            Form 15CA has 4 parts as mentioned below. Depending on amount and taxability of remittance, specific parts
+            of Form 15CA needs to be filled:<br>
+            <ul>
+              <li>
+                <b>Part A</b>&nbsp; If remittance is taxable and the total value of such remittance or remittances
+                during the Financial Year is less than Rs. 5 lakh
+              </li>
+              <li>
+                <b>Part B</b>&nbsp; If order/ certificate u/s 195(2)/195(3)/197 of Income-tax Act has been obtained from
+                the Assessing Officer
+              </li>
+              <li>
+                <b>Part C</b>&nbsp; If remittance is taxable and the total value of such remittance or remittances
+                during the Financial Year is more than Rs. 5 lakh and a certificate in Form No. 15CB from an accountant
+                as defined in the explanation below sub-section (2) of section 288 has been obtained.
+
+              </li>
+              <li>
+                <b>Part D</b>&nbsp; To be filled up if the remittance is not taxable other than payments referred to in
+                rule 37BB(3) by the person referred to in rule 37BB(2).
+              </li>
+            </ul>
+
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <h6>
+              3. What is 15CB ?
+            </h6>
+            <br>
+            This certificate is required only when the remittance is not chargeable to tax. It is a channel of obtaining
+            tax clearance. This form essentially is a declaration used by the remitter for collecting information on
+            payments chargeable.
+            On the other hand form, 15CB is a certificate from a CA which acts as an alternative channel for obtaining
+            tax clearance. Form No. 15CB will only be required for payments made to non-residents, which are taxable and
+            if the payment exceeds Rs. 5 lakhs.
+            Form 15CB will be NOT be required to be furnished by an individual for remittance, which does not require
+            RBI approval
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <h6>
+              4. What is Rule 37BB.
+            </h6>
+            <br>
+            List of payments of specified nature are mentioned in Rule 37BB, which do not require the submission of
+            Forms 15CA and 15CB, has been expanded from 28 to 33 from April 1, 2016 including payments for imports.
+            <table>
+
+            </table>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <h6>
+              5.What is DTAA?
+            </h6>
+            <br>
+            The DTAA means the Double Taxation Avoidance Agreement. This concept concentrates on avoiding overlapping
+            taxes when it comes to paying taxes in two different countries. Thus for example when one Indian Resident
+            also works in Singapore, due to some reasons he/she may have to pay taxes in Singapore as well. To avoid
+            payment of taxation in both the countries for a common purpose he/she must follow the DTAA. This can be
+            applied to a person or a company.
+
+
+            Any Indian Resident who is a person as specified under the income tax act 1961 or any resident of a DTAA
+            affiliated country gets benefited under the DTAA.
+            <br> There are two types of DTAA's :
+            <ul>
+              <li>
+                Unlimited DTAA
+              </li>
+              <li>
+                Limited DTAA
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <h6>
+              6. What is limited DTAA? What countries does India hold limited DTAA with?
+            </h6>
+            <br>
+            Indian Residents can benefit from the limited DTAA on only certain types of incomes from the following
+            countries:
+
+            <ul>
+              <li>
+                Afghanistan
+              </li>
+              <li>
+                Bulgaria
+              </li>
+              <li>
+                Czechoslovakia
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <h6>
+              7. How do you decide whether Form 15CB or Form 15CA is required ?
+            </h6>
+            <br>
+            <ul>
+              <li>
+                Step 1: First and foremost one must decide if the payment made is taxable.
+              </li>
+              <li>
+                Step 2: If the first step holds true then figure out if the amount exceeds R/s 5,00,000.
+              </li>
+            </ul>
+            <hr class="hr-text" data-content="OR">
+            The aggregate payment to the Non-resident if below R/s 2,50,000 in the year.
+            <ul>
+              <li>
+                Step 3: If all of the above points hold true, then fill form 15CA Part A only and remit.
+              </li>
+              <li>
+                Step 4: If a single payment is more than R/s 5 lakhs or the aggregate more than 2,50,000 R/s then you
+                must approach a CA and get form 15CB filed and submitted.
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <h6>
+              8. What is the reason behind the introduction of 15CA and 15CB?
+            </h6>
+            <br>
+            <ul>
+              <li>
+                The main reason for the introduction for such a form is that banks need to keep a track of the
+                remittances made outside the country and to the people or institutions they are made to.
+              </li>
+              <li>
+                Also, there are many such circumstances where you do not need to submit these forms.
+              </li>
+              <li>
+                Furthermore, foreign remittances have tax implications that are often neglected.
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-3 md-3">
+
+    </div>
+
+  </div>
+</div> -->

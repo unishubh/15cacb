@@ -48,6 +48,11 @@ import { DashboardsComponent } from './views/dashboards/dashboards.component';
 import { RulesComponent } from './views/rules/rules.component';
 import { FormsModule } from '@angular/forms';
 import { NewPostComponent } from './new-post/new-post.component';
+import { PostComponent } from './views/post/post.component';
+import { FaqComponent } from './views/faq/faq.component';
+import { NewFaqComponent } from './views/new-faq/new-faq.component';
+import { CreateFaqComponent } from './views/create-faq/create-faq.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -65,6 +70,7 @@ import { NewPostComponent } from './new-post/new-post.component';
     FormsModule,
     HttpModule,
     CommonModule,
+    RouterModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
   ],
@@ -79,7 +85,11 @@ import { NewPostComponent } from './new-post/new-post.component';
     LoginsComponent,
     DashboardsComponent,
     RulesComponent,
-    NewPostComponent
+    NewPostComponent,
+    PostComponent,
+    FaqComponent,
+    NewFaqComponent,
+    CreateFaqComponent
   ],
   providers: [{
     provide: LocationStrategy,

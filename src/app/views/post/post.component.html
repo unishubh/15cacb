@@ -1,0 +1,47 @@
+<style>
+.content {
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 4%;
+  padding-bottom: 5%;
+}
+.image {
+  padding: 20%;
+  padding-left: 30%;
+  padding-top: 30%;
+}
+.recent {
+  text-align: center;
+    padding-top: 7%;
+}
+</style>
+
+<div *ngIf="isDisplay">
+  <div class="card" style='margin-top: 5%;'>
+    <div class="row">
+      <div class="col-sm-3 md-3" >
+        <img class="image" src="../../../assets/img/brand/sygnet.svg" />
+      </div>
+      <div class="col-sm-6 md-6" style = "padding-top:5%; padding-left:5%;">
+        <div class="" style='text-align: center'>
+          <h4>{{doc.title}}</h4>
+        </div>
+        <div class="content" [innerHtml]="doc.text">
+        </div>
+      </div>
+
+      <div class="col-sm-3 md-6">
+        <div class="" style='margin-top: 5%;'>
+          <div class="recents">
+            Recent Posts
+          </div>
+          <ul>
+            <li *ngFor="let post of posts" (click)="showPost(post)">
+              {{post.title}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

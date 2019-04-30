@@ -12,7 +12,7 @@ export class DashboardsComponent implements OnInit {
   constructor(private http: Http, private router: Router) { }
   public fd = new FormData();
   public isMaster = localStorage.getItem('type') === 'master' ? true : false;
-  private base_url = 'http://localhost:3000/api/';
+  private base_url = 'http://13.234.109.247:3000/api/';
   private url_pending_login = 'getPendingLogins';
   public logs: any = [1, 2, 3, 4, 5];
   public test: string;
@@ -166,6 +166,7 @@ export class DashboardsComponent implements OnInit {
     headers.append('Access-Control-Allow-Origin', '*');
     const contents = new URLSearchParams();
     contents.set('id', id);
+    console.log("Id is", id);
     this.http.post(this.base_url + 'submitDetails/', contents.toString(), { headers: headers }).
       subscribe(
         (response: Response) => {
@@ -177,5 +178,13 @@ export class DashboardsComponent implements OnInit {
           alert('Some error occured while fetching logins');
         }
       );
+  }
+
+  createBlog() {
+    this.router.navigate(['newPost']);
+  }
+
+  createFaq() {
+    this.router.navigate(['createFaq']);
   }
 }

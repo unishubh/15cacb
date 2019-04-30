@@ -60,16 +60,30 @@
           <td>{{c+1}}</td>
           <td>{{doc.name}}</td>
           <td>{{doc.date}}</td>
-          <td><p *ngIf="doc.submit == 1">{{doc.acknowledge}}</p><p *ngIf="doc.submit != 1">Not Processed</p></td>
-          <td><p *ngIf="doc.submit == 1">{{doc.tracking}}</p><p *ngIf="doc.submit != 1">Not Processed</p></td>
-          <td><p *ngIf="doc.submit == 1">{{doc.udin}}</p><p *ngIf="doc.submit != 1">Not Processed</p></td>
-          <td><button *ngIf="doc.submit == 1"  class="btn-ghost-primary" (click)="download(doc.download)">Download</button><p *ngIf="doc.submit != 1">Not Processed</p></td>
-          <td><span *ngIf="doc.status == 'pending'" class="badge badge-warning">{{doc.status}}</span><span class="badge badge-success" *ngIf="doc.status == 'accepted'">{{doc.status}}</span></td>
+          <td>
+            <p *ngIf="doc.submit == 1">{{doc.acknowledge}}</p>
+            <p *ngIf="doc.submit != 1">Not Processed</p>
+          </td>
+          <td>
+            <p *ngIf="doc.submit == 1">{{doc.tracking}}</p>
+            <p *ngIf="doc.submit != 1">Not Processed</p>
+          </td>
+          <td>
+            <p *ngIf="doc.submit == 1">{{doc.udin}}</p>
+            <p *ngIf="doc.submit != 1">Not Processed</p>
+          </td>
+          <td><button *ngIf="doc.submit == 1" class="btn-ghost-primary"
+              (click)="download(doc.download)">Download</button>
+            <p *ngIf="doc.submit != 1">Not Processed</p>
+          </td>
+          <td><span *ngIf="doc.status == 'pending'" class="badge badge-warning">{{doc.status}}</span><span
+              class="badge badge-success" *ngIf="doc.status == 'accepted'">{{doc.status}}</span></td>
         </tr>
       </tbody>
     </table>
     <!-- Table for master -->
-    <table *ngIf="isMaster" class="table table-bordered table-striped table-sm table-responsive" style="overflow:scroll;">
+    <table *ngIf="isMaster" class="table table-bordered table-striped table-sm table-responsive"
+      style="overflow:scroll;">
       <thead>
         <tr>
           <th></th>
@@ -85,20 +99,34 @@
           <th>SUBMIT</th>
         </tr>
       </thead>
-      <tbody>save
+      <tbody>
         <tr *ngFor="let doc of docs; let c = index;">
-            <td>{{c+1}}</td>
-            <td>{{doc.name}}</td>
-            <td>{{doc.date}}</td>
-            <td>{{doc.uploaded_doc}}</td>
-            <td><p *ngIf="doc.submit == 1">{{doc.acknowledge}}</p><input *ngIf="doc.submit != 1" type="text" class="form-control" name="acknowledgement" [(ngModel)]="doc.acknowledge" ></td>
-            <td><p *ngIf="doc.submit == 1">{{doc.tracking}}</p><input *ngIf="doc.submit != 1" type="text" name="tracking" class="form-control" [(ngModel)]="doc.tracking" ></td>
-            <td><p *ngIf="doc.submit == 1">{{doc.udin}}</p><input *ngIf="doc.submit != 1" type="text" name="udin"  class="form-control"[(ngModel)]="doc.udin" ></td>
-            <td><p *ngIf="doc.submit == 1">SUBMITTED</p><input type="file" *ngIf="doc.submit != 1" name="report" (change)="onFileChange($event,'res')" value="doc.download"></td>
-            <td><span *ngIf="doc.status == 'pending'" class="badge badge-warning">{{doc.status}}</span><span class="badge badge-success" *ngIf="doc.status == 'accepted'">{{doc.status}}</span></td>
-            <td><button class = "btn btn-block btn-outline-primary" (click) = "save(doc.acknowledge, doc.tracking, doc.udin, doc.did)">Save</button></td>
-            <td><button class = "btn btn-block btn-outline-success" (click) = "submitDetails(doc.id)">Submit</button></td>
-           
+          <td>{{c+1}}</td>
+          <td>{{doc.name}}</td>
+          <td>{{doc.date}}</td>
+          <td>{{doc.uploaded_doc}}</td>
+          <td>
+            <p *ngIf="doc.submit == 1">{{doc.acknowledge}}</p><input *ngIf="doc.submit != 1" type="text"
+              class="form-control" name="acknowledgement" [(ngModel)]="doc.acknowledge">
+          </td>
+          <td>
+            <p *ngIf="doc.submit == 1">{{doc.tracking}}</p><input *ngIf="doc.submit != 1" type="text" name="tracking"
+              class="form-control" [(ngModel)]="doc.tracking">
+          </td>
+          <td>
+            <p *ngIf="doc.submit == 1">{{doc.udin}}</p><input *ngIf="doc.submit != 1" type="text" name="udin"
+              class="form-control" [(ngModel)]="doc.udin">
+          </td>
+          <td>
+            <p *ngIf="doc.submit == 1">SUBMITTED</p><input type="file" *ngIf="doc.submit != 1" name="report"
+              (change)="onFileChange($event,'res')" value="doc.download">
+          </td>
+          <td><span *ngIf="doc.status == 'pending'" class="badge badge-warning">{{doc.status}}</span><span
+              class="badge badge-success" *ngIf="doc.status == 'accepted'">{{doc.status}}</span></td>
+          <td><button class="btn btn-block btn-outline-primary"
+              (click)="save(doc.acknowledge, doc.tracking, doc.udin, doc.did)">Save</button></td>
+          <td><button class="btn btn-block btn-outline-success" (click)="submitDetails(doc.did)">Submit</button></td>
+
         </tr>
       </tbody>
     </table>
@@ -136,5 +164,17 @@
       <tbody>
       </tbody>
     </table>
+  </div>
+
+  <div *ngIf="isMaster" class="row">
+    <div class="col-sm-3 md-3">
+      <a (click)="createBlog()"><button class="btn btn-block btn-success">Create new CaseLaw</button></a>
+    </div>
+    <div class="col-sm-3 md-3">
+       
+      </div>
+    <div class="col-sm-3 md-3">
+        <a (click)="createFaq()"><button class="btn btn-block btn-success">Create new FAQ/Rule</button></a>
+      </div>
   </div>
 </div>

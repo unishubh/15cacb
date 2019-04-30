@@ -9,9 +9,12 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import {BlogComponent} from './views/blog/blog.component';
+import {PostComponent} from './views/post/post.component';
 import {DashboardsComponent} from './views/dashboards/dashboards.component';
 import {NewPostComponent} from './new-post/new-post.component';
-
+import {FaqComponent} from './views/faq/faq.component';
+import {NewFaqComponent} from './views/new-faq/new-faq.component';
+import {CreateFaqComponent} from './views/create-faq/create-faq.component';
 export const routes: Routes = [
   {
     path: '',
@@ -56,6 +59,29 @@ export const routes: Routes = [
     children: [
 
       {
+        path: 'createFaq',
+        component: CreateFaqComponent,
+        data: {
+          title: 'FAQ'
+        }
+      },
+      {
+        path: 'newFaq/:id',
+        component: NewFaqComponent,
+        data: {
+          title: 'FAQ'
+        }
+      },
+
+      {
+        path: 'rules',
+        component: FaqComponent,
+        data: {
+          title: 'FAQ'
+        }
+      },
+
+      {
         path: 'blog',
         component: BlogComponent,
         data: {
@@ -74,6 +100,13 @@ export const routes: Routes = [
         component: NewPostComponent,
         data: {
           title: 'newPost'
+        }
+      },
+      {
+        path: 'getPost/:id',
+        component: PostComponent,
+        data: {
+          title: 'Blogs'
         }
       },
       {

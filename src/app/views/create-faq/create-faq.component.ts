@@ -3,11 +3,11 @@ import { Http, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-new-post',
-  templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.scss']
+  selector: 'app-create-faq',
+  templateUrl: './create-faq.component.html',
+  styleUrls: ['./create-faq.component.scss']
 })
-export class NewPostComponent implements OnInit {
+export class CreateFaqComponent implements OnInit {
 
   constructor(private http: Http) { }
   public editorContent;
@@ -23,7 +23,7 @@ export class NewPostComponent implements OnInit {
     console.log(this.editorContent);
     this.fd.append('title', this.title);
     this.fd.append('text', this.editorContent);
-    this.http.post(this.base_url + '/newBlog/', this.fd).
+    this.http.post(this.base_url + '/newFaq/', this.fd).
       subscribe(
         (response: Response) => {
           const resp = response.json();
@@ -44,6 +44,5 @@ export class NewPostComponent implements OnInit {
     this.fd.append('file', file, this.name + extension);
     this.fd.append('image', this.name + extension);
   }
-
 
 }

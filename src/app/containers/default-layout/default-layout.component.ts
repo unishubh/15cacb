@@ -12,6 +12,7 @@ export class DefaultLayoutComponent implements OnDestroy {
   public sidebarMinimized = false;
   private changes: MutationObserver;
   public element: HTMLElement;
+  public isLogin = (localStorage.getItem('type')) ? true:false;
   constructor(@Inject(DOCUMENT) _document?: any) {
 
     this.changes = new MutationObserver((mutations) => {

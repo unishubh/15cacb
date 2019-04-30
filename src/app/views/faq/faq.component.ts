@@ -4,26 +4,24 @@ import { Http, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+  selector: 'app-faq',
+  templateUrl: './faq.component.html',
+  styleUrls: ['./faq.component.scss']
 })
-export class BlogComponent implements OnInit {
-
-
+export class FaqComponent implements OnInit {
 
   constructor(private pagerService: PagerService, private http: Http, private router: Router) { }
   public pager: any = {};
   public pagedItems: any = [];
   public posts = [];
   public base_url = 'http://13.234.109.247:3000/api';
+
   ngOnInit() {
     this.setPage(1);
-
   }
 
   setPage(page: number) {
-    this.http.get(this.base_url + '/getBlogs/').
+    this.http.get(this.base_url + '/getFaqs/').
       subscribe(
         (response: Response) => {
           const resp = response.json();
@@ -33,7 +31,7 @@ export class BlogComponent implements OnInit {
           this.pagedItems = this.posts.slice(this.pager.startIndex, this.pager.endIndex + 1);
         },
         (error) => {
-          // tslint:disable-next-line: quotemark
+// tslint:disable-next-line: quotemark
           alert("Can't fetch posts this time");
         }
       );
@@ -41,8 +39,7 @@ export class BlogComponent implements OnInit {
   }
 
   displayBlog(doc) {
-    console.log(doc);
-    this.router.navigate(['/getPost/', doc.id]);
+    console.log(doc.title);
+    this.router.navigate(['newFaq', doc.id]);
   }
-
 }

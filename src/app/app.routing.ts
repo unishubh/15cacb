@@ -15,6 +15,7 @@ import {NewPostComponent} from './new-post/new-post.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {NewFaqComponent} from './views/new-faq/new-faq.component';
 import {CreateFaqComponent} from './views/create-faq/create-faq.component';
+import { AuthGuard } from './auth.guard';
 export const routes: Routes = [
   {
     path: '',
@@ -91,6 +92,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardsComponent,
+        canActivate : [AuthGuard],
         data: {
           title: 'dashboard'
         }

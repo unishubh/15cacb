@@ -1,20 +1,27 @@
 <div class="animated fadeIn" style="background-color : #f5f5ef">
   <div class="row" >
-    <div class="col-sm-10 col-md-10">
+    <div class="col-sm-12 col-md-12">
+      <br>
+      <strong><h4>Caselaws</h4></strong>
+      <br>
       <div class="row">
-        <div *ngFor="let post of pagedItems" class="col-sm-6 col-md-4">
+        <div *ngFor="let post of pagedItems" class="col-sm-6 col-md-3">
           <div (click) = "displayBlog(post)" class="card border-secondary">
             <div class="card-header">
-             <img src="../../../assets/img/brand/sygnet.svg" />
+             <img src="../../../assets/img/brand/sygnet.svg" style=" width: 75%;height: 75%;"/>
             </div>
             <div class="card-body">
-              {{post.title}}
+              {{post.title | slice:0:100}}
+              <br>
+              <p style="color: #51de51;">{{post.date}}</p>
+              <br>
+              <p [innerHtml]="post.text | slice:0:350"></p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
       <div class="row">
         <div class="col-sm-12 md-12">
           <div class="card">
@@ -22,7 +29,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   
@@ -48,7 +55,7 @@
 
 </div>
 
-<div style=" background-color: #e6e6e6;">
+<!-- <div style=" background-color: #e6e6e6;">
   <div class="row">
     <div class="col-sm-4 md-4">
       <div class="">
@@ -88,5 +95,5 @@
 
     </div>
   </div>
-</div>
+</div> -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">

@@ -31,6 +31,7 @@ export class BlogComponent implements OnInit {
           this.pager = this.pagerService.getPager(this.posts.length, page);
           console.log(this.pager);
           this.pagedItems = this.posts.slice(this.pager.startIndex, this.pager.endIndex + 1);
+          console.log(this.pagedItems);
         },
         (error) => {
           // tslint:disable-next-line: quotemark

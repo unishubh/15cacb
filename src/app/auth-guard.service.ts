@@ -10,7 +10,7 @@ export class AuthGuardService {
   constructor(private myRoute: Router) { }
 
   isLoggedIn() {
-    if(localStorage.getItem('token')) {
+    if(localStorage.getItem('token') != null) {
       return true;
     }
     else {

@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PostComponent implements OnInit {
 
-  private base_url = 'http://13.234.109.247:3000/api/';
+  private base_url = 'http://localhost:3000/api/';
   private post_url = 'getPost/';
   public id: number;
   public doc:{};

@@ -12,7 +12,7 @@ export class DashboardsComponent implements OnInit {
   constructor(private http: Http, private router: Router) { }
   public fd = new FormData();
   public isMaster = localStorage.getItem('type') === 'master' ? true : false;
-  private base_url = 'http://13.234.109.247:3000/api/';
+  private base_url = 'http://localhost:3000/api/';
   private url_pending_login = 'getPendingLogins';
   public logs: any = [1, 2, 3, 4, 5];
   public test: string;
@@ -186,5 +186,10 @@ export class DashboardsComponent implements OnInit {
 
   createFaq() {
     this.router.navigate(['createFaq']);
+  }
+
+  download(file) {
+    console.log(file);
+    window.open("../../../assets/img/brand/"+file, "_blank");
   }
 }

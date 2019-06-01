@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   constructor(private http: Http, private router: Router) { }
-  private base_url = 'http://13.234.109.247:3000/api/';
+  private base_url = 'http://localhost:3000/api/';
   private url_register = 'register';
 
   ngOnInit() {

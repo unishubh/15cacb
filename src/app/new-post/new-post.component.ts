@@ -14,7 +14,7 @@ export class NewPostComponent implements OnInit {
   public fd = new FormData();
   public name;
   public title;
-  public base_url = 'http://13.234.109.247:3000/api/';
+  public base_url = 'http://localhost:3000/api/';
 
   ngOnInit() {
   }

@@ -8,7 +8,7 @@
         <div *ngFor="let post of pagedItems" class="col-sm-6 col-md-3">
           <div (click) = "displayBlog(post)" class="card border-secondary">
             <div class="card-header">
-             <img src="../../../assets/img/brand/sygnet.svg" style=" width: 75%;height: 75%;"/>
+             <img src="{{'../../../assets/img/brand/' + post.image}}" style=" width: 75%;height: 75%;"/>
             </div>
             <div class="card-body">
               {{post.title | slice:0:100}}

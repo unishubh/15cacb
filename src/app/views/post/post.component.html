@@ -7,9 +7,9 @@
   }
 
   .image {
-    padding: 20%;
-    padding-left: 30%;
-    padding-top: 30%;
+    padding: 5%;
+    /* padding-left: 30%;
+    padding-top: 30%; */
   }
 
   .recents {
@@ -36,7 +36,7 @@
             <h3 style="color: #0b82ea">{{doc.title}}</h3>
           </strong>
         </div>
-        <img class="image" src="../../../assets/img/brand/sygnet.svg" style="float: left; width: 60%;" />
+        <img class="image" src="{{'../../../assets/img/brand/' + doc.image}}" style="float: left; width: 60%;" />
         <p class="content" [innerHtml]="doc.text">
         </p>
       </div>
@@ -47,11 +47,16 @@
           <div class="recents">
             Recent Posts
           </div>
-          <ul>
-            <li *ngFor=" let post of posts" (click)="showPost(post)">
-              {{post.title}}
-            </li>
-          </ul>
+          <div style="background-color: rgb(251, 251, 251);
+          padding: 5%;
+          padding-left: 10%;">
+            <ul>
+              <li *ngFor=" let post of posts" (click)="showPost(post)" style="list-style-type: none; margin: 2%;">
+                {{post.title}}
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
